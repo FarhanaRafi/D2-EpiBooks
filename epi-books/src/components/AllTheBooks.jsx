@@ -12,9 +12,9 @@ class AllTheBooks extends Component {
         <Row className="mt-3">
           {items.map((item) => {
             return (
-              <Col xs={4} md={3}>
+              <Col xs={6} md={4} lg={3} key={item.asin}>
                 <CardDeck className="mt-3 mb-3 card-hover">
-                  <Card key={item.asin}>
+                  <Card>
                     <Card.Img variant="top" src={item.img} height={300} />
                     <Card.Body>
                       <Card.Title className="book-title">
@@ -22,9 +22,7 @@ class AllTheBooks extends Component {
                       </Card.Title>
                     </Card.Body>
                     <Card.Footer>
-                      <small className="text-muted">
-                        {item.price} $ - "{item.asin}"
-                      </small>
+                      <small className="text-muted">{item.price} $</small>
                     </Card.Footer>
                   </Card>
                 </CardDeck>
