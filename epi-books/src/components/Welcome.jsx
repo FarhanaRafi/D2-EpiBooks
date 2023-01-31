@@ -13,7 +13,7 @@ const Welcome = () => {
       <Container>
         <Row>
           <Col xs={8}>
-            <h1 className="text-white display-1">
+            <h1 className="text-white display-1 mt-5">
               <strong className="header">Book World</strong>
             </h1>
             <p className="text-white h2">

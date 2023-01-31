@@ -15,7 +15,7 @@ class AllTheBooks extends Component {
               <Col xs={6} md={4} lg={3} key={item.asin}>
                 <CardDeck className="mt-3 mb-3 card-hover">
                   <Card>
-                    <Card.Img variant="top" src={item.img} height={300} />
+                    <Card.Img variant="top" src={item.img} height={370} />
                     <Card.Body>
                       <Card.Title className="book-title">
                         {item.title}
