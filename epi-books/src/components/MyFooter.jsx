@@ -3,7 +3,7 @@ import { MDBFooter, MDBContainer } from "mdb-react-ui-kit";
 const MyFooter = () => {
   return (
     <MDBFooter
-      className="text-center text-white mt-5"
+      className="text-center text-white mt-5 fixed-bottom"
       style={{ backgroundColor: "#21081a" }}
     >
       <MDBContainer className="p-4"></MDBContainer>
