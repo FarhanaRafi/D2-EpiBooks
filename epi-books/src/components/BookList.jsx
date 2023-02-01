@@ -37,14 +37,7 @@ class BookList extends Component {
             />
           </Form.Group>
 
-          <Button
-            variant="primary"
-            type="submit"
-            className="ml-3"
-            // onSubmit={(e) => {
-            //   this.filterBookList.bind(this);
-            // }}
-          >
+          <Button variant="primary" type="submit" className="ml-3">
             Submit
           </Button>
         </Form>
