@@ -10,8 +10,9 @@ class BookList extends Component {
   };
 
   filterBookList = (e) => {
+    e.preventDefault();
     let booksFiltered = items.filter((item) => {
-      return item.title.toLowerCase().includes(this.state.query);
+      return item.title.toLowerCase().includes(this.state.query.toLowerCase());
     });
     this.setState({ books: booksFiltered });
   };
@@ -19,11 +20,7 @@ class BookList extends Component {
   render() {
     return (
       <Container>
-        <Form
-          onSubmit={(e) => {
-            this.filterBookList.bind(this);
-          }}
-        >
+        <Form onSubmit={this.filterBookList}>
           <Form.Group className="col-6">
             <Form.Label>
               <strong className="heading">Search Books</strong>
@@ -33,6 +30,7 @@ class BookList extends Component {
               placeholder="Enter Name of the Book"
               value={this.state.query}
               onChange={(e) => {
+                e.preventDefault();
                 console.log(e.target.value);
                 this.setState({ query: e.target.value });
               }}
@@ -55,7 +53,7 @@ class BookList extends Component {
           <strong className="heading">Books</strong>
         </h2>
         <Row className="mt-3">
-          {items.map((item) => {
+          {this.state.books.map((item) => {
             return (
               <Col xs={6} md={4} lg={3} key={item.asin}>
                 <SingleBook book={item} />;
