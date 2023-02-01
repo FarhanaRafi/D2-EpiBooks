@@ -11,11 +11,16 @@ class SingleBook extends Component {
       <Container>
         <CardDeck>
           <Card
-            onClick={() => {
-              console.log("clicked");
-              this.setState({
-                selected: true,
-              });
+            onClick={(e) => {
+              if (this.state.selected === true) {
+                this.setState({
+                  selected: false,
+                });
+              } else {
+                this.setState({
+                  selected: true,
+                });
+              }
             }}
             style={{
               color: this.state.selected === true ? "red" : "black",
