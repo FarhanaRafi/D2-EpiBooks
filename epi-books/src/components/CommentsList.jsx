@@ -1,12 +1,13 @@
 import { Component } from "react";
-import { ListGroup } from "react-bootstrap";
+import { ListGroup, Spinner } from "react-bootstrap";
 // import { AiFillDelete } from "react-icons/ai";
 import SingleComment from "./SingleComment";
 
 class CommentsList extends Component {
   state = {
-    comment: [[]],
+    comment: [],
     elementId: this.props.asin,
+    isLoading: true,
   };
 
   fetchComments = async () => {
@@ -27,6 +28,7 @@ class CommentsList extends Component {
         let data = await response.json();
         this.setState({
           comment: data,
+          isLoading: false,
         });
       } else {
         alert("problem");
@@ -58,11 +60,16 @@ class CommentsList extends Component {
   render() {
     console.log("loading", this.props.comment);
     return (
-      <ListGroup>
-        {this.state.comment.map((c) => {
-          return <SingleComment comment={c} />;
-        })}
-      </ListGroup>
+      <>
+        {this.state.isLoading && ( // isLoading is true or false
+          <Spinner animation="border" variant="success" />
+        )}
+        <ListGroup>
+          {this.state.comment.map((c) => {
+            return <SingleComment comment={c} />;
+          })}
+        </ListGroup>
+      </>
     );
   }
 }
