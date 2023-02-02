@@ -24,6 +24,8 @@ class SingleComment extends Component {
   render() {
     return (
       <ListGroup.Item key={this.props.comment._id}>
+        <strong className="text-danger">{this.props.comment.author}</strong>{" "}
+        <br />
         {this.props.comment.comment}
         <br></br>
         {/* Rating: {this.props.comment.rate} */}
