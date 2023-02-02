@@ -7,7 +7,6 @@ class BookList extends Component {
   state = {
     query: "",
     books: items,
-    isLoading: true,
   };
 
   filterBookList = (e) => {

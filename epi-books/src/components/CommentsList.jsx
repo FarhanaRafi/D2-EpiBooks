@@ -1,10 +1,11 @@
 import { Component } from "react";
-import { ListGroup, Button } from "react-bootstrap";
-import { AiFillDelete } from "react-icons/ai";
+import { ListGroup } from "react-bootstrap";
+// import { AiFillDelete } from "react-icons/ai";
+import SingleComment from "./SingleComment";
 
 class CommentsList extends Component {
   state = {
-    comment: [],
+    comment: [[]],
     elementId: this.props.asin,
   };
 
@@ -55,25 +56,11 @@ class CommentsList extends Component {
   }
 
   render() {
+    console.log("loading", this.props.comment);
     return (
       <ListGroup>
         {this.state.comment.map((c) => {
-          return (
-            <ListGroup.Item key={c._id}>
-              {c.comment}
-              <br></br>Rating: {c.rate}
-              <Button
-                variant="light"
-                className="ml-5"
-                onClick={(e) => {
-                  e.preventDefault();
-                  this.deleteComment(c._id);
-                }}
-              >
-                <AiFillDelete />
-              </Button>
-            </ListGroup.Item>
-          );
+          return <SingleComment comment={c} />;
         })}
       </ListGroup>
     );
