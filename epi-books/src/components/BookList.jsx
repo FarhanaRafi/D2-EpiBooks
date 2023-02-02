@@ -7,6 +7,7 @@ class BookList extends Component {
   state = {
     query: "",
     books: items,
+    isLoading: true,
   };
 
   filterBookList = (e) => {
@@ -27,6 +28,7 @@ class BookList extends Component {
             </Form.Label>
             <Form.Control
               type="text"
+              required
               placeholder="Enter Name of the Book"
               value={this.state.query}
               onChange={(e) => {

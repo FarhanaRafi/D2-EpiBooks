@@ -1,9 +1,13 @@
 import { Card, Container, CardDeck } from "react-bootstrap";
 import { Component } from "react";
+import CommentArea from "./CommentArea";
+import CommentsList from "./CommentsList";
 
 class SingleBook extends Component {
   state = {
     selected: false,
+    asin: this.props.book.asin,
+    isLoading: true,
   };
 
   render() {
@@ -37,6 +41,8 @@ class SingleBook extends Component {
             </Card.Footer>
           </Card>
         </CardDeck>
+        {this.state.selected && <CommentsList asin={this.state.asin} />}
+        {this.state.selected && <CommentArea asin={this.state.asin} />}
       </Container>
     );
   }
