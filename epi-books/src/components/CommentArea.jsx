@@ -43,13 +43,13 @@ class CommentArea extends Component {
 
   render() {
     return (
-      <>
+      <div className="bg-white">
         {this.state.isLoading && (
           <Spinner animation="border" variant="success" />
         )}
         <CommentsList comments={this.state.comments} asin={this.props.asin} />
         <AddComment asin={this.props.asin} />
-      </>
+      </div>
     );
   }
 }

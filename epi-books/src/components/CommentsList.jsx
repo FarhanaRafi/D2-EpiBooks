@@ -31,6 +31,7 @@ class CommentsList extends Component {
         {this.state.isError && (
           <Alert variant="danger">Aww snap, we got an error!</Alert>
         )}
+        <h5 className="text-center pt-2">Reviews</h5>
 
         <ListGroup>
           {this.props.comments.map((c) => {

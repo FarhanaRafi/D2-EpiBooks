@@ -27,7 +27,6 @@ class AddComment extends Component {
 
       console.log(response);
       if (response.ok) {
-        alert("Submitted");
         this.setState({
           review: {
             comment: "",
@@ -45,7 +44,7 @@ class AddComment extends Component {
   render() {
     return (
       <Form
-        className="mx-4"
+        className="px-4"
         onSubmit={(e) => {
           e.preventDefault();
           console.log("form is submitting...", e);
@@ -53,12 +52,17 @@ class AddComment extends Component {
         }}
       >
         <Form.Group>
-          <Form.Label>Comment</Form.Label>
+          <Form.Label>
+            <strong>Add a Comment</strong>
+          </Form.Label>
           <Form.Control
             as="textarea"
+            className="bg-secondary text-white"
             rows={3}
             value={this.state.review.comment}
             onChange={(e) => {
+              console.log(e, "event");
+              e.preventDefault();
               this.setState({
                 review: {
                   ...this.state.review,
@@ -68,12 +72,14 @@ class AddComment extends Component {
             }}
           />
         </Form.Group>
-        <Form.Group controlId="exampleForm.ControlSelect1">
+        <Form.Group>
           <Form.Label>Rating</Form.Label>
           <Form.Control
+            className="bg-secondary text-white"
             as="select"
             value={this.state.review.rate}
             onChange={(e) => {
+              e.preventDefault();
               this.setState({
                 review: {
                   ...this.state.review,

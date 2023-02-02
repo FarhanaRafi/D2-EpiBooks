@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { ListGroup, Button } from "react-bootstrap";
 import { AiFillDelete } from "react-icons/ai";
+import StarRatings from "react-star-ratings";
 
 class SingleComment extends Component {
   deleteComment = async (commentId) => {
@@ -24,7 +25,16 @@ class SingleComment extends Component {
     return (
       <ListGroup.Item key={this.props.comment._id}>
         {this.props.comment.comment}
-        <br></br>Rating: {this.props.comment.rate}
+        <br></br>
+        {/* Rating: {this.props.comment.rate} */}
+        <StarRatings
+          rating={this.props.comment.rate}
+          changeRating={false}
+          numberOfStars={5}
+          name="rating"
+          starDimension="15px"
+          starRatedColor="red"
+        />
         <Button
           variant="light"
           className="ml-5"

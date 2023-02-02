@@ -40,9 +40,10 @@ class SingleBook extends Component {
             <Card.Footer>
               <small className="text-muted">Last updated 3 mins ago</small>
             </Card.Footer>
-            {this.state.selected && <CommentArea asin={this.state.asin} />}
           </Card>
         </CardDeck>
+
+        {this.state.selected && <CommentArea asin={this.state.asin} />}
         {/* {this.state.selected && <CommentsList asin={this.state.asin} />} */}
       </Container>
     );
