@@ -15,12 +15,14 @@ class SingleComment extends Component {
         },
       }
     );
-    console.log(res);
+
+    if (!res.ok) {
+      alert("problem");
+    }
   };
   render() {
-    console.log("comment ", this.props.comment);
     return (
-      <ListGroup.Item>
+      <ListGroup.Item key={this.props.comment._id}>
         {this.props.comment.comment}
         <br></br>Rating: {this.props.comment.rate}
         <Button

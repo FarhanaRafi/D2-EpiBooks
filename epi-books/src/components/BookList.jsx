@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import items from "../book/history.json";
+import items from "../book/fantasy.json";
 import SingleBook from "./SingleBook";
 
 class BookList extends Component {

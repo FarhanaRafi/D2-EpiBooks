@@ -1,45 +1,13 @@
 import { Component } from "react";
-import { ListGroup, Spinner, Alert } from "react-bootstrap";
-// import { AiFillDelete } from "react-icons/ai";
+import { ListGroup, Alert } from "react-bootstrap";
 import SingleComment from "./SingleComment";
 
 class CommentsList extends Component {
   state = {
-    comment: [],
+    comments: this.props.comments,
     elementId: this.props.asin,
     isLoading: true,
     isError: false,
-  };
-
-  fetchComments = async () => {
-    try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/comments/" +
-          this.state.elementId,
-
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M5MzQ1ZmU3MzczODAwMTUzNzQzNzgiLCJpYXQiOjE2NzUzMzkzNzAsImV4cCI6MTY3NjU0ODk3MH0.RUaBHf7ZH16daFuEprgMywAxgYfNSr4yqo2KY8XjYRM",
-          },
-        }
-      );
-      console.log(response);
-      if (response.ok) {
-        let data = await response.json();
-        this.setState({
-          comment: data,
-          isLoading: false,
-          isError: false,
-        });
-      } else {
-        alert("problem");
-      }
-    } catch (err) {
-      this.setState({
-        isError: true,
-      });
-    }
   };
 
   deleteComment = async (commentId) => {
@@ -57,22 +25,15 @@ class CommentsList extends Component {
     console.log(res);
   };
 
-  componentDidMount() {
-    this.fetchComments();
-  }
-
   render() {
-    console.log("loading", this.props.comment);
     return (
       <>
         {this.state.isError && (
-          <Alert variant="danger">Aww snap, we got an error!😨</Alert>
+          <Alert variant="danger">Aww snap, we got an error!</Alert>
         )}
-        {this.state.isLoading && ( // isLoading is true or false
-          <Spinner animation="border" variant="success" />
-        )}
+
         <ListGroup>
-          {this.state.comment.map((c) => {
+          {this.props.comments.map((c) => {
             return <SingleComment comment={c} />;
           })}
         </ListGroup>

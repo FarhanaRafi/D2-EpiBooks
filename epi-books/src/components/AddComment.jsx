@@ -45,6 +45,7 @@ class AddComment extends Component {
   render() {
     return (
       <Form
+        className="mx-4"
         onSubmit={(e) => {
           e.preventDefault();
           console.log("form is submitting...", e);
@@ -89,7 +90,7 @@ class AddComment extends Component {
           </Form.Control>
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" className="mb-3 ml-5">
           Submit
         </Button>
       </Form>
