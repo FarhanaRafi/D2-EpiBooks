@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { ListGroup, Spinner } from "react-bootstrap";
+import { ListGroup, Spinner, Alert } from "react-bootstrap";
 // import { AiFillDelete } from "react-icons/ai";
 import SingleComment from "./SingleComment";
 
@@ -8,6 +8,7 @@ class CommentsList extends Component {
     comment: [],
     elementId: this.props.asin,
     isLoading: true,
+    isError: false,
   };
 
   fetchComments = async () => {
@@ -29,12 +30,15 @@ class CommentsList extends Component {
         this.setState({
           comment: data,
           isLoading: false,
+          isError: false,
         });
       } else {
         alert("problem");
       }
     } catch (err) {
-      console.log(err);
+      this.setState({
+        isError: true,
+      });
     }
   };
 
@@ -61,6 +65,9 @@ class CommentsList extends Component {
     console.log("loading", this.props.comment);
     return (
       <>
+        {this.state.isError && (
+          <Alert variant="danger">Aww snap, we got an error!😨</Alert>
+        )}
         {this.state.isLoading && ( // isLoading is true or false
           <Spinner animation="border" variant="success" />
         )}

@@ -6,6 +6,7 @@ class CommentArea extends Component {
   state = {
     isLoading: true,
   };
+
   //   fetchComments = async () => {
   //     try {
   //       let response = await fetch(
