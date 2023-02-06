@@ -16,7 +16,6 @@ class App extends Component {
       comment: "",
       rate: 1,
       elementId: this.props.asin,
-      selected: false,
     },
     selectedBook: null,
   };

@@ -41,6 +41,23 @@ class AddComment extends Component {
     }
   };
 
+  componentDidMount() {
+    // this.sendComment();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log(prevProps, this.props, "create");
+    if (this.props.asin !== prevProps.asin) {
+      this.setState({
+        review: {
+          comment: "",
+          rate: 1,
+          elementId: this.props.asin,
+        },
+      });
+    }
+  }
+
   render() {
     return (
       <Form
@@ -59,8 +76,8 @@ class AddComment extends Component {
             as="textarea"
             className="bg-secondary text-white"
             rows={3}
-            value={this.props.selectedValueFromApp}
-            // value={this.state.review.comment}
+            // value={this.props.selectedValueFromApp}
+            value={this.state.review.comment}
             onChange={(e) => {
               console.log(e, "event");
               e.preventDefault();
@@ -78,8 +95,8 @@ class AddComment extends Component {
           <Form.Control
             className="bg-secondary text-white"
             as="select"
-            value={this.props.selectedValueFromApp}
-            // value={this.state.review.rate}
+            // value={this.props.selectedValueFromApp}
+            value={this.state.review.rate}
             onChange={(e) => {
               e.preventDefault();
 

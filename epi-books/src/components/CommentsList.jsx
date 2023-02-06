@@ -31,13 +31,23 @@ class CommentsList extends Component {
         {this.state.isError && (
           <Alert variant="danger">Aww snap, we got an error!</Alert>
         )}
-        <h5 className="text-center pt-2">Reviews</h5>
 
-        <ListGroup>
-          {this.props.comments.map((c) => {
-            return <SingleComment comment={c} />;
-          })}
-        </ListGroup>
+        <h5 className="text-center pt-2 review ">Reviews</h5>
+        {this.state.comments ? (
+          <ListGroup>
+            {this.props.comments.map((c) => {
+              return <SingleComment comment={c} />;
+            })}
+          </ListGroup>
+        ) : (
+          <p>No Comments</p>
+        )}
+
+        {/* <ListGroup>
+            {this.props.comments.map((c) => {
+              return <SingleComment comment={c} />;
+            })}
+          </ListGroup> */}
       </>
     );
   }
