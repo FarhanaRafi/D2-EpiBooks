@@ -29,9 +29,9 @@ class SingleBook extends Component {
               }
               this.props.selectBook(this.state.book);
             }}
-            style={{
-              color: this.state.selected === true ? "red" : "black",
-            }}
+            // style={{
+            //   color: this.state.selected === true ? "red" : "black",
+            // }}
           >
             <Card.Img variant="top" src={this.props.book.img} height={270} />
             <Card.Body>
