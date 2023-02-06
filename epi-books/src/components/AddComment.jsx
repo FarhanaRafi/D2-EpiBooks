@@ -44,7 +44,7 @@ class AddComment extends Component {
   render() {
     return (
       <Form
-        className="px-4"
+        className="px-4 form1"
         onSubmit={(e) => {
           e.preventDefault();
           console.log("form is submitting...", e);
@@ -59,6 +59,7 @@ class AddComment extends Component {
             as="textarea"
             className="bg-secondary text-white"
             rows={3}
+            value={this.props.selectedValueFromApp}
             value={this.state.review.comment}
             onChange={(e) => {
               console.log(e, "event");
@@ -77,9 +78,11 @@ class AddComment extends Component {
           <Form.Control
             className="bg-secondary text-white"
             as="select"
+            value={this.props.selectedValueFromApp}
             value={this.state.review.rate}
             onChange={(e) => {
               e.preventDefault();
+
               this.setState({
                 review: {
                   ...this.state.review,

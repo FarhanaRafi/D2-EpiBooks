@@ -24,4 +24,9 @@
 
 .selected{
 background-color: bisque;
+
+}
+
+.form-container{
+  margin-top: 400px;
 }

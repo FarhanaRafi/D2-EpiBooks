@@ -5,15 +5,17 @@ import { Spinner } from "react-bootstrap";
 
 class CommentArea extends Component {
   state = {
+    selectedBookAsin: this.props.selectedBook,
     isLoading: true,
     comments: [],
   };
 
   fetchComments = async () => {
+    console.log(this.state.selectedBookAsin, "comment area");
     try {
       let response = await fetch(
         "https://striveschool-api.herokuapp.com/api/comments/" +
-          this.props.asin,
+          this.state.selectedBookAsin,
 
         {
           headers: {
