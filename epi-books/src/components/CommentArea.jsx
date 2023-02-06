@@ -5,6 +5,7 @@ import { Spinner } from "react-bootstrap";
 
 class CommentArea extends Component {
   state = {
+    title: this.props.title,
     selectedBookAsin: this.props.selectedBook,
     isLoading: true,
     comments: [],
@@ -46,8 +47,11 @@ class CommentArea extends Component {
   componentDidUpdate(prevProps, prevState) {
     // console.log(this.props, prevProps);
 
-    if (prevProps.book !== this.props.book) {
-      this.setState({ selectedBookAsin: this.props.book });
+    if (prevState.selectedBookAsin !== this.props.book) {
+      this.setState({
+        selectedBookAsin: this.props.book,
+        title: this.props.title,
+      });
       this.fetchComments();
     }
   }
@@ -55,16 +59,20 @@ class CommentArea extends Component {
   render() {
     console.log(this.props, "selected");
     return (
-      <div className="bg-white sticky-top ">
+      <div className="bg-white sticky-top">
         {this.state.isLoading && (
           <Spinner animation="border" variant="success" />
         )}
+        <h5 className="mb-n5 text-center pt-2">
+          <strong>{this.state.title}</strong>
+        </h5>
         <CommentsList
           comments={this.state.comments}
           asin={this.props.asin}
           key={this.props.asin}
+          refresh={this.fetchComments}
         />
-        <AddComment asin={this.props.book} />
+        <AddComment asin={this.props.book} refresh={this.fetchComments} />
       </div>
     );
   }

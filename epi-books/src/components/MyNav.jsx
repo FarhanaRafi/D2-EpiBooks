@@ -2,7 +2,7 @@ import { Navbar, Nav } from "react-bootstrap";
 
 const MyNav = (props) => {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Navbar.Brand href="#home" className="ml-4">
         Epi-Books - {props.genre}{" "}
       </Navbar.Brand>

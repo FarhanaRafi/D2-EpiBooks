@@ -17,12 +17,13 @@ class App extends Component {
       rate: 1,
       elementId: this.props.asin,
     },
+    title: null,
     selectedBook: null,
   };
 
   changeAppState = (book) => {
     console.log(book);
-    this.setState({ review: book, selectedBook: book.asin });
+    this.setState({ review: book, selectedBook: book.asin, title: book.title });
   };
 
   render() {
@@ -39,7 +40,10 @@ class App extends Component {
               />
             </Col>
             <Col xs={3} className="mt-5 form-container">
-              <CommentArea book={this.state.selectedBook} />
+              <CommentArea
+                title={this.state.title}
+                book={this.state.selectedBook}
+              />
             </Col>
             {/* <AllTheBooks /> 
           asin={this.state.asin}*/}

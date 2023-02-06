@@ -10,21 +10,6 @@ class CommentsList extends Component {
     isError: false,
   };
 
-  deleteComment = async (commentId) => {
-    let res = await fetch(
-      "https://striveschool-api.herokuapp.com/api/comments/" + commentId,
-
-      {
-        method: "DELETE",
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M5MzQ1ZmU3MzczODAwMTUzNzQzNzgiLCJpYXQiOjE2NzUzMzkzNzAsImV4cCI6MTY3NjU0ODk3MH0.RUaBHf7ZH16daFuEprgMywAxgYfNSr4yqo2KY8XjYRM",
-        },
-      }
-    );
-    console.log(res);
-  };
-
   render() {
     return (
       <>
@@ -32,22 +17,14 @@ class CommentsList extends Component {
           <Alert variant="danger">Aww snap, we got an error!</Alert>
         )}
 
-        <h5 className="text-center pt-2 review ">Reviews</h5>
-        {this.state.comments ? (
-          <ListGroup>
-            {this.props.comments.map((c) => {
-              return <SingleComment comment={c} />;
-            })}
-          </ListGroup>
-        ) : (
-          <p>No Comments</p>
-        )}
-
-        {/* <ListGroup>
-            {this.props.comments.map((c) => {
-              return <SingleComment comment={c} />;
-            })}
-          </ListGroup> */}
+        <h5 className="text-center mt-5 review text-danger">
+          <strong>Reviews</strong>{" "}
+        </h5>
+        <ListGroup>
+          {this.props.comments.map((c) => {
+            return <SingleComment refresh={this.props.refresh} comment={c} />;
+          })}
+        </ListGroup>
       </>
     );
   }
