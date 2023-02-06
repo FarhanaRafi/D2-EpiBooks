@@ -60,7 +60,7 @@ class AddComment extends Component {
             className="bg-secondary text-white"
             rows={3}
             value={this.props.selectedValueFromApp}
-            value={this.state.review.comment}
+            // value={this.state.review.comment}
             onChange={(e) => {
               console.log(e, "event");
               e.preventDefault();
@@ -79,7 +79,7 @@ class AddComment extends Component {
             className="bg-secondary text-white"
             as="select"
             value={this.props.selectedValueFromApp}
-            value={this.state.review.rate}
+            // value={this.state.review.rate}
             onChange={(e) => {
               e.preventDefault();
 

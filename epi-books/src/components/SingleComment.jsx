@@ -31,7 +31,6 @@ class SingleComment extends Component {
         {/* Rating: {this.props.comment.rate} */}
         <StarRatings
           rating={this.props.comment.rate}
-          changeRating={false}
           numberOfStars={5}
           name="rating"
           starDimension="15px"

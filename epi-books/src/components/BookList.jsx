@@ -49,8 +49,13 @@ class BookList extends Component {
           <Row className="mt-3">
             {this.state.books.map((item) => {
               return (
-                <Col xs={6} md={4} lg={3} key={item.asin}>
-                  <SingleBook book={item} selectBook={this.props.selectBook} />;
+                <Col xs={6} md={4} lg={3}>
+                  <SingleBook
+                    book={item}
+                    selectBook={this.props.selectBook}
+                    key={item.asin}
+                  />
+                  ;
                 </Col>
               );
             })}

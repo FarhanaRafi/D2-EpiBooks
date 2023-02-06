@@ -43,13 +43,26 @@ class CommentArea extends Component {
     this.fetchComments();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    console.log(this.props, prevProps);
+
+    if (this.props.book !== prevProps.book) {
+      this.setState({ selectedBookAsin: this.props.book });
+      this.fetchComments();
+    }
+  }
+
   render() {
     return (
       <div className="bg-white">
         {this.state.isLoading && (
           <Spinner animation="border" variant="success" />
         )}
-        <CommentsList comments={this.state.comments} asin={this.props.asin} />
+        <CommentsList
+          comments={this.state.comments}
+          asin={this.props.asin}
+          key={this.props.asin}
+        />
         <AddComment asin={this.props.asin} />
       </div>
     );
